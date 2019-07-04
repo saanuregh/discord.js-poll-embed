@@ -33,3 +33,5 @@ pollEmbed(msg, title, options, timeout, emojiList, forceEndPollEmoji);
 // There you go, now you have poll embeds
 ```
 # Preview
+![Demo](https://raw.githubusercontent.com/saanuregh/discord.js-poll-embed/master/demo.png)  
+Here is a preview.
