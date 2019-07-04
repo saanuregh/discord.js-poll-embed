@@ -40,7 +40,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 	const voterInfo = new Map();
 	reactionCollector.on('collect', (reaction, user) => {
 		if (usedEmojis.includes(reaction.emoji.name)) {
-			if (reaction.emoji.name === forceEndPollEmoji && msg.author.id === user.id) reactionCollector.stop();
+			if (reaction.emoji.name === forceEndPollEmoji && msg.author.id === user.id) return reactionCollector.stop();
 			if (!voterInfo.has(user.id)) voterInfo.set(user.id, { emoji: reaction.emoji.name });
 			const votedEmoji = voterInfo.get(user.id).emoji;
 			if (votedEmoji !== reaction.emoji.name) {
