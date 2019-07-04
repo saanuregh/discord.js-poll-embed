@@ -13,7 +13,7 @@ const defEmojiList = [
 	'\uD83D\uDD1F'
 ];
 
-const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmojiList, forceEndPollEmoji = '\u2705') => {
+const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmojiList.slice(), forceEndPollEmoji = '\u2705') => {
 	if (!msg && !msg.channel) return msg.reply('Channel is inaccessible.');
 	if (!title) return msg.reply('Poll title is not given.');
 	if (!options) return msg.reply('Poll options are not given.');
