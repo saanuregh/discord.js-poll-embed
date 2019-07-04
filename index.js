@@ -72,7 +72,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 const embedBuilder = (title, author) => {
 	return new MessageEmbed()
 		.setTitle(`Poll - ${title}`)
-		.setFooter(`Poll created by <@${author}>`);
+		.setFooter(`Poll created by ${author}`);
 };
 
 module.exports = pollEmbed;
