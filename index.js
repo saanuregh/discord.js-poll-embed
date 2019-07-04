@@ -71,7 +71,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 
 const embedBuilder = (title, authorId) => {
 	return new MessageEmbed()
-		.setAuthor(`Poll - ${title}`, this.client.user.displayAvatarURL())
+		.setTitle(`Poll - ${title}`)
 		.setFooter(`Poll created by <@${authorId}>`);
 };
 
