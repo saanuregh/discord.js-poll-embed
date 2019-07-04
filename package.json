@@ -1,0 +1,24 @@
+{
+  "name": "discord.js-poll-embed",
+  "version": "1.0.0",
+  "description": "A simple utility to create polls with just embeds and emoji reactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saanuregh/discord.js-poll-embed.git"
+  },
+  "keywords": [
+    "discord",
+    "discord.js",
+    "poll"
+  ],
+  "author": "saanuregh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saanuregh/discord.js-poll-embed/issues"
+  },
+  "homepage": "https://github.com/saanuregh/discord.js-poll-embed#readme"
+}
