@@ -30,7 +30,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 	const usedEmojis = Object.keys(emojiInfo);
 	usedEmojis.push(forceEndPollEmoji);
 
-	const poll = await msg.channel.send(embedBuilder(title, msg.author.id).setDescription(text));
+	const poll = await msg.channel.send(embedBuilder(title, msg.discriminator).setDescription(text));
 	for (const emoji of usedEmojis) await poll.react(emoji);
 
 	const reactionCollector = poll.createReactionCollector(
@@ -65,14 +65,14 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 		text = '*Ding! Ding! Ding! Time\'s up!\n Results are in,*\n\n';
 		for (const emoji in emojiInfo) text += `\`${emojiInfo[emoji].option}\` - \`${emojiInfo[emoji].votes}\`\n\n`;
 		poll.delete();
-		msg.channel.send(embedBuilder(title, msg.author.id).setDescription(text));
+		msg.channel.send(embedBuilder(title, msg.discriminator).setDescription(text));
 	});
 };
 
-const embedBuilder = (title, authorId) => {
+const embedBuilder = (title, author) => {
 	return new MessageEmbed()
 		.setTitle(`Poll - ${title}`)
-		.setFooter(`Poll created by <@${authorId}>`);
+		.setFooter(`Poll created by <@${author}>`);
 };
 
 module.exports = pollEmbed;
