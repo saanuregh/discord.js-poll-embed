@@ -34,7 +34,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 	for (const emoji of usedEmojis) await poll.react(emoji);
 
 	const reactionCollector = poll.createReactionCollector(
-		(reaction, user) => usedEmojis.includes(reaction.emoji.name) && user.id === msg.author.id,
+		(reaction, user) => usedEmojis.includes(reaction.emoji.name) && !user.bot,
 		timeout === 0 ? {} : { time: timeout * 1000 }
 	);
 	const voterInfo = new Map();

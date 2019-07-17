@@ -1,6 +1,6 @@
 {
   "name": "discord.js-poll-embed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple utility to create polls with just embeds and emoji reactions.",
   "main": "index.js",
   "scripts": {
