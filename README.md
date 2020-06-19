@@ -13,7 +13,7 @@ A simple utility to create polls with just embeds and emoji reactions. No poll A
 * Force closing poll.
 * Custom emojis for voting (Required for bypassing default options limit)
 
-Supports only discord.js@^12.0.0 (master).
+Supports only discord.js@^12.2.0 (master).
 # Installation
 * `npm install discord.js-poll-embed`
 
