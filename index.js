@@ -13,17 +13,18 @@ const defEmojiList = [
 	'\uD83D\uDD1F'
 ];
 
-const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmojiList.slice(), forceEndPollEmoji = '\u2705') => {
+const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmojiList, forceEndPollEmoji = '\u2705') => {
 	if (!msg && !msg.channel) return msg.reply('Channel is inaccessible.');
 	if (!title) return msg.reply('Poll title is not given.');
 	if (!options) return msg.reply('Poll options are not given.');
 	if (options.length < 2) return msg.reply('Please provide more than one choice.');
 	if (options.length > emojiList.length) return msg.reply(`Please provide ${emojiList.length} or less choices.`);
 
+	let usedEmojiList = emojiList.slice();
 	let text = `*To vote, react using the correspoding emoji.\nThe voting will end in **${timeout} seconds**.\nPoll creater can end the poll **forcefully** by reacting to ${forceEndPollEmoji} emoji.*\n\n`;
 	const emojiInfo = {};
 	for (const option of options) {
-		const emoji = emojiList.splice(0, 1);
+		const emoji = usedEmojiList.splice(0, 1);
 		emojiInfo[emoji] = { option: option, votes: 0 };
 		text += `${emoji} : \`${option}\`\n\n`;
 	}
@@ -44,7 +45,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 			if (!voterInfo.has(user.id)) voterInfo.set(user.id, { emoji: reaction.emoji.name });
 			const votedEmoji = voterInfo.get(user.id).emoji;
 			if (votedEmoji !== reaction.emoji.name) {
-				const lastVote = poll.reactions.get(votedEmoji);
+				const lastVote = poll.reactions.resolve(votedEmoji);
 				lastVote.count -= 1;
 				lastVote.users.remove(user.id);
 				emojiInfo[votedEmoji].votes -= 1;
