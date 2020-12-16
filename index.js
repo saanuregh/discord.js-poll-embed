@@ -20,7 +20,7 @@ const pollEmbed = async (msg, title, options, timeout = 30, emojiList = defEmoji
 	if (options.length < 2) return msg.reply('Please provide more than one choice.');
 	if (options.length > emojiList.length) return msg.reply(`Please provide ${emojiList.length} or less choices.`);
 
-	let text = `*To vote, react using the correspoding emoji.\nThe voting will end in **${timeout} seconds**.\nPoll creater can end the poll **forcefully** by reacting to ${forceEndPollEmoji} emoji.*\n\n`;
+	let text = `*To vote, react using the correspoding emoji.\nThe voting will end in **${timeout} seconds**.\nPoll creator can end the poll **forcefully** by reacting to ${forceEndPollEmoji} emoji.*\n\n`;
 	const emojiInfo = {};
 	for (const option of options) {
 		const emoji = emojiList.splice(0, 1);
